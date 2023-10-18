@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class pengaduanController extends Controller
 {
@@ -40,6 +41,8 @@ class pengaduanController extends Controller
     }
 
     function proses_tambah_pengaduan(Request $request){
+        return Auth::user()->nik;
+        
         $nama_foto = $request->foto->getClientOriginalName();
 
         //validasi
@@ -53,9 +56,9 @@ class pengaduanController extends Controller
         // isi
         $isi_pengaduan = $request->isi_laporan;
 
-        DB::table('pengaduan')->insert([
+        Pengaduan::create([
             'tgl_pengaduan' => date('Y-m-d'),
-            'nik' => '1113',
+            'nik' => Auth::user()->nik,
             'isi_laporan' => $isi_pengaduan,
             'foto' => $request->foto->getClientOriginalName(),
             'status' => '0'

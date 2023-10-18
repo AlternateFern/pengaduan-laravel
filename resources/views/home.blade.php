@@ -17,8 +17,9 @@
         <a href="{{ url('login') }}">Login</a>
          --}}
          @include('layouts.navbar')
-         <div class="container">
-            <h2 style="margin-top:10px; text-shadow: 0px 1px 1.8px black;"> List Laporan Pengaduan</h2>
+         <div class="container mt-3">
+          <h2 style="text-shadow: 0px 1px 1.8px black;"> Welcome {{auth()->user()->username}}</h2>
+            <h2 style="text-shadow: 0px 1px 1.8px black;"> List Laporan Pengaduan</h2>
             <table class="table" style="margin-top:20px;">
               <tbody>
                 @foreach ($pengaduan as $pengaduan)

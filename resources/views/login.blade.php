@@ -12,7 +12,7 @@
     <div class="container">
         <h1>Login</h1>
         <h3>Selamat datang kembali!</h3>
-        <form class="p-3 mt-3" action={{url('/login')}} method="post">
+        <form class="p-3 mt-3" action="{{url('login')}}" method="post">
             @method("POST")
             @CSRF
             <div class="form-group">
@@ -26,11 +26,10 @@
                 <input type="checkbox" name="rememberme" id="rememberme">
                 <label for="rememberme">Remember Me</label>
                 <button type="submit" name="" class="btn mt-3 btn-block btn-grad" style="color:white;font-weight:bold;">Login</button>
-
             </div>
         </form>
         <div class="text-center">
-            <a href="#">Lupa kata sandi?</a> atau <a href="register.php">Daftar</a>
+            <a href="#">Lupa kata sandi?</a> atau <a href="register">Daftar</a>
         </div>
     </div>
     </div>

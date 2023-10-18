@@ -33,6 +33,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $table = 'masyarakat';
+    
     /**
      * The attributes that should be cast.
      *

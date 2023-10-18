@@ -17,6 +17,9 @@
         <li class="nav-item" style="margin-right: 30px;">
           <a class="nav-link" href="login">Login (temporary)</a>
         </li>
+        <li class="nav-item" style="margin-right: 30px;">
+          <a class="nav-link" href="logout">Logout (temporary)</a>
+        </li>
       </div>
     </div>
   </ul>
