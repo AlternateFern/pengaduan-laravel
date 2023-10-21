@@ -19,7 +19,7 @@ class LoginController extends Controller
         if(Auth::attempt($dataLogin)){
             return redirect('/home');
         }else{
-            return redirect('/login');
+            return redirect('/login')->with("error", "Username atau Password Salah");
         }
     }
 

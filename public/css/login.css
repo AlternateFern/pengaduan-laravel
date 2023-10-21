@@ -7,7 +7,7 @@
 
 body {
     background-color: #C6D1C0;
-    background-image: url('../img/bg.png');
+    background-image: url('../storage/image/bg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -111,6 +111,7 @@ body {
     flex-flow: row wrap;
     align-items: center;
   }
+
   /* .form-control {
     width: 100%;
     color: #495057;
@@ -118,3 +119,11 @@ body {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
   } */
+
+  .togglepassword {
+    cursor: pointer;
+    position: relative;
+    top: 13.33333333333333333333333333px;
+    left: 8px;
+    padding: 2px;
+  }

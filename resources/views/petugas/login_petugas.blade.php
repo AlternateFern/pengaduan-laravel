@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login | Pengaduan Masyarakat</title>
+    <title>Login (Petugas) | Pengaduan Masyarakat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <div class="container">
@@ -17,7 +17,7 @@
         <h5 class="alert alert-danger text-center">{{session("error")}}</h5>
         @endif
 
-        <form class="p-3 mt-3" action="{{url('login')}}" method="post">
+        <form class="p-3 mt-3" action="{{url('petugas/login')}}" method="post">
             @method("POST")
             @CSRF
             <div class="form-group">
@@ -26,7 +26,7 @@
                 <div class="bar"></div>
                 <div class="form-inline">
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" style="width:90%;">
-                    <div class="togglepassword"><img src="storage/image/eye.png" width="33px" height="33px" id="togglePassword"></div>
+                    <div class="togglepassword"><img src="../storage/image/eye.png" width="33px" height="33px" id="togglePassword"></div>
                 </div>
                 <div class="bar" style="width:90%;"></div>
                 <input type="checkbox" name="rememberme" id="rememberme">
