@@ -23,6 +23,6 @@ class AuthController extends Controller
             'telp' => $request->telp
         ]);
 
-        return redirect('/home');
+        return redirect('/login');
     }
 }

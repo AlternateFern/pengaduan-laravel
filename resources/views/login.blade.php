@@ -35,7 +35,7 @@
             </div>
         </form>
         <div class="text-center">
-            <a href="#">Lupa kata sandi?</a> atau <a href="register">Daftar</a>
+            <a href="#">Lupa kata sandi?</a> atau <a href="{{url('register')}}">Daftar</a>
         </div>
     </div>
     </div>

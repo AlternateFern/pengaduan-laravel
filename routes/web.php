@@ -3,7 +3,7 @@
 use App\Http\Controllers\pengaduanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LoginPetugasController;
+use App\Http\Controllers\PetugasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +28,12 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/petugas/login', [LoginPetugasController::class, 'index']);
+Route::get('/petugas/', [PetugasController::class, 'viewlogin']);
+Route::post('/petugas/', [PetugasController::class, 'login']);
+Route::get('/petugas/register', [PetugasController::class, 'viewregister']);
+Route::post('/petugas/register', [PetugasController::class, 'register']);
+
+Route::get('/petugas/home', [PetugasController::class, 'home']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [pengaduanController::class, 'index']);
