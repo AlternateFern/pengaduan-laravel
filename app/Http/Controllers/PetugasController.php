@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller
@@ -34,7 +35,7 @@ class PetugasController extends Controller
     function login(Request $request){
         $data = $request->only('username', 'password');
         if(Auth::guard("petugas")->attempt($data)){
-            return redirect('/home');
+            return redirect('/petugas/home');
         }else{
             return redirect('/petugas')->with("error", "Username atau Password Salah");
         }
@@ -42,10 +43,13 @@ class PetugasController extends Controller
 
     function logout(){
         Auth::guard("petugas")->logout();
+
         return redirect("/petugas");
     }
 
     public function home(){
-        return view('petugas/home_petugas');
+        $pengaduan = Pengaduan::all();
+
+        return view('petugas/home_petugas', ["pengaduan" => $pengaduan]);
     }
 }

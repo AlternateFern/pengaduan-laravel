@@ -30,6 +30,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/petugas/', [PetugasController::class, 'viewlogin']);
 Route::post('/petugas/', [PetugasController::class, 'login']);
+Route::get('/petugas/logout', [PetugasController::class, 'logout']);
 Route::get('/petugas/register', [PetugasController::class, 'viewregister']);
 Route::post('/petugas/register', [PetugasController::class, 'register']);
 
