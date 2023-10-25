@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1>Login</h1>
-        <h3>Selamat datang kembali!</h3>
+        <h3>Selamat datang kembali, Admin!</h3>
 
         @if(session("error"))
         <h5 class="alert alert-danger text-center">{{session("error")}}</h5>

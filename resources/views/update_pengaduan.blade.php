@@ -23,7 +23,7 @@
                     </div>
                     <label for="exampleFormControlTextarea1" class="form-label">Bukti File</label>
                     <div class="input-group mb-3">
-                        <img src="img/{{  $pengaduan->foto }}" style="width:auto;height:200px; margin-bottom:20px;">
+                        <img src="{{ asset("storage/image/$pengaduan->foto") }}" style="width:auto;height:200px; margin-bottom:20px;">
                     </div>
                     <label for="exampleFormControlTextarea1" class="form-label">Bukti berbentuk File Gambar atau Video</label>
                     <div class="input-group mb-3">

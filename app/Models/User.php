@@ -35,6 +35,7 @@ class User extends Authenticatable
 
     protected $table = 'masyarakat';
     
+    
     /**
      * The attributes that should be cast.
      *

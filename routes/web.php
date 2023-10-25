@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\pengaduanController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PetugasController;
 use Illuminate\Support\Facades\Route;
@@ -22,19 +22,22 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/register', [AuthController::class, 'register']);
-Route::post('/register', [AuthController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/petugas/', [PetugasController::class, 'viewlogin']);
 Route::post('/petugas/', [PetugasController::class, 'login']);
-Route::get('/petugas/logout', [PetugasController::class, 'logout']);
 Route::get('/petugas/register', [PetugasController::class, 'viewregister']);
 Route::post('/petugas/register', [PetugasController::class, 'register']);
 
-Route::get('/petugas/home', [PetugasController::class, 'home']);
+Route::middleware(['checkpetugas'])->group(function () {
+    Route::get('/petugas/home', [PetugasController::class, 'home']);
+    Route::get('/petugas/logout', [PetugasController::class, 'logout']);
+
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [pengaduanController::class, 'index']);

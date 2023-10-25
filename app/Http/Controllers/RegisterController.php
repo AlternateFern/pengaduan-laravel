@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class RegisterController extends Controller
 {
-    function register(){
+    function index(){
         return view('register');
     }
 
-    function store(Request $request){
+    function register(Request $request){
         // var_dump($request->all());
 
         $data = DB::table("masyarakat")->insert([

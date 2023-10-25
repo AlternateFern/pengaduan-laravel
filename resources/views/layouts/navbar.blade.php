@@ -12,13 +12,7 @@
           <a class="nav-link" href="profile">Profil</a>
         </li>
         <li class="nav-item" style="margin-right: 30px;">
-          <a class="nav-link" href="register">Register (temporary)</a>
-        </li>
-        <li class="nav-item" style="margin-right: 30px;">
-          <a class="nav-link" href="login">Login (temporary)</a>
-        </li>
-        <li class="nav-item" style="margin-right: 30px;">
-          <a class="nav-link" href="logout">Logout (temporary)</a>
+          <a class="nav-link" href="logout">Logout</a>
         </li>
       </div>
     </div>

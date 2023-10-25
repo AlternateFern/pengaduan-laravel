@@ -15,7 +15,7 @@ class pengaduanController extends Controller
             // $pengaduan = DB::table('pengaduan')->get();
 
             // Elloquent ORM
-            $pengaduan = Pengaduan::all();
+            $pengaduan = Pengaduan::where('nik',Auth::user()->nik)->get();
 
             return view('/home', ["pengaduan" => $pengaduan]);
     }
@@ -41,8 +41,7 @@ class pengaduanController extends Controller
     }
 
     function proses_tambah_pengaduan(Request $request){
-        return Auth::user()->nik;
-        
+        // return Auth::user()->nik;
         $nama_foto = $request->foto->getClientOriginalName();
 
         //validasi
@@ -56,7 +55,8 @@ class pengaduanController extends Controller
         // isi
         $isi_pengaduan = $request->isi_laporan;
 
-        Pengaduan::create([
+        DB::table("pengaduan")->insert([
+        // Pengaduan::create([
             'tgl_pengaduan' => date('Y-m-d'),
             'nik' => Auth::user()->nik,
             'isi_laporan' => $isi_pengaduan,
