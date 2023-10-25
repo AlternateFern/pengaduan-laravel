@@ -9,9 +9,6 @@
           <a class="nav-link" aria-current="page" href="{{ url('isi_pengaduan') }}">Buat Laporan</a>
         </li>
         <li class="nav-item" style="margin-right: 30px;">
-          <a class="nav-link" href="profile">Profil</a>
-        </li>
-        <li class="nav-item" style="margin-right: 30px;">
           <a class="nav-link" href="logout">Logout</a>
         </li>
       </div>
