@@ -18,7 +18,7 @@
          --}}
          @include('layouts.navbar')
          <div class="container mt-3">
-          <h2 style="text-shadow: 0px 1px 1.8px black;"> Welcome Admin {{auth()->user()->username}}</h2>
+          <h2 style="text-shadow: 0px 1px 1.8px black;"> Welcome Admin</h2>
             <h2 style="text-shadow: 0px 1px 1.8px black;"> List Laporan Pengaduan</h2>
             <table class="table" style="margin-top:20px;">
               <tbody>
@@ -48,7 +48,6 @@
                     <td>
                       <td>
                         <a href="hapus_pengaduan/{{$pengaduan->id_pengaduan}}"><button type="button" class="btn btn-outline-danger">Hapus</button></a> 
-                        <a href="update_pengaduan/{{$pengaduan->id_pengaduan}}"><button type="button" class="btn btn-outline-success">Update</button></a> 
                         <a href="detail_pengaduan/{{$pengaduan->id_pengaduan}}"><button type="button" class="btn btn-outline-warning">Detail</button></a>
                       </td> 
                     </td>

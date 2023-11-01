@@ -30,6 +30,16 @@ class pengaduanController extends Controller
         return view('/detail_pengaduan',['pengaduan'=> $pengaduan]);
     }
 
+    function detailpengaduanpetugas($id){
+        // $pengaduan = DB::table('pengaduan')-> get();
+        // $title = "titel";
+
+        // return view('/detail',['pengaduan'=>$pengaduan]);
+        $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=',$id)->get();
+    
+        return view('petugas/detail_pengaduan_petugas',['pengaduan'=> $pengaduan]);
+    }
+
     function tampil_laporan(){
         $judul_laporan = "Judul Laporan";
 
@@ -92,3 +102,4 @@ class pengaduanController extends Controller
         return view('update_pengaduan',['pengaduan' => $pengaduan]);
     }
 }
+

@@ -4,6 +4,7 @@ use App\Http\Controllers\pengaduanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\UpdateStatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,7 +37,9 @@ Route::post('/petugas/register', [PetugasController::class, 'register']);
 Route::middleware(['checkpetugas'])->group(function () {
     Route::get('/petugas/home', [PetugasController::class, 'home']);
     Route::get('/petugas/logout', [PetugasController::class, 'logout']);
-
+    Route::get('/petugas/detail_pengaduan/{id}', [pengaduanController::class, 'detailpengaduanpetugas']);
+    Route::get('/petugas/update_status/{id}', [UpdateStatusController::class, 'viewStatus']);
+    Route::post('/petugas/update_status/{id}', [UpdateStatusController::class, 'updateStatus']);
 });
 
 Route::middleware(['auth'])->group(function () {
