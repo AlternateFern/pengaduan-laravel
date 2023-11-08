@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Pengaduan;
+use Illuminate\Http\Request;
 
-class UpdateStatusController extends Controller
+
+class TanggapanController extends Controller
 {
     function updateStatus(Request $request, $id)
     {
@@ -21,8 +22,8 @@ class UpdateStatusController extends Controller
         return redirect('/petugas/home');
     }
 
-    function viewStatus($id){
+    function viewTanggapan($id){
         $pengaduan = Pengaduan::where('id_pengaduan', $id)->first();
-        return view('petugas/update_status', ['pengaduan' => $pengaduan]);
+        return view('petugas/tanggapan_pengaduan_petugas', ['pengaduan' => $pengaduan]);
     }
 }

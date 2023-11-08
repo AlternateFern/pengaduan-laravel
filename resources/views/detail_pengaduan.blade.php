@@ -7,7 +7,8 @@
     <title>Detail | PM</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/masyarakat.css">
+    <script type="text/javascript" src="{{ URL::asset('js/refresh.js') }}"></script>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
             <div class="mb-3">
                 <form action="" method="POST" enctype="multipart/form-data" class="mb-3">
                     <div class="mb-1">
-                        <label for="exampleFormControlTextarea1" class="form-label">Index </label>
+                        <label for="exampleFormControlTextarea1" class="form-label">Isi Laporan :</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="isi_laporan" disabled>{{  $pengaduan->isi_laporan }}</textarea>
                     </div>
                     <label for="exampleFormControlTextarea1" class="form-label">File</label>

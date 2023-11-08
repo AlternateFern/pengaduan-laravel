@@ -20,7 +20,7 @@
         <form class="p-3 mt-3" action="{{url('login')}}" method="post">
             @method("POST")
             @CSRF
-            <div class="form-group">
+            <div class="form-group form-anim">
 
                 <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                 <div class="bar"></div>

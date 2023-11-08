@@ -51,13 +51,14 @@ class pengaduanController extends Controller
     }
 
     function proses_tambah_pengaduan(Request $request){
-        // return Auth::user()->nik;
-        $nama_foto = $request->foto->getClientOriginalName();
 
         //validasi
         $request->validate([
             'isi_laporan' => 'required|min:5'
         ]);
+        
+        // return Auth::user()->nik;
+        $nama_foto = $request->foto->getClientOriginalName();
 
         // Nyimpan Foto / Mindahin File
         $request->foto->storeAs('public/image', $nama_foto);

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home | PM</title>
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/petugas.css">
+    <script type="text/javascript" src="{{ URL::asset('js/refresh.js') }}"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
@@ -16,7 +17,7 @@
         <a href="{{ url('about') }}">About</a>
         <a href="{{ url('login') }}">Login</a>
          --}}
-         @include('layouts.navbar')
+         @include('layouts.navbar_petugas')
          <div class="container mt-3">
           <h2 style="text-shadow: 0px 1px 1.8px black;"> Welcome Admin</h2>
             <h2 style="text-shadow: 0px 1px 1.8px black;"> List Laporan Pengaduan</h2>
@@ -47,8 +48,8 @@
                     <td>{{  $pengaduan->status }}</td>
                     <td>
                       <td>
+                        <a href="detail_pengaduan/{{$pengaduan->id_pengaduan}}"><button type="button" class="btn btn-warning">Detail & Respon</button></a>
                         <a href="hapus_pengaduan/{{$pengaduan->id_pengaduan}}"><button type="button" class="btn btn-outline-danger">Hapus</button></a> 
-                        <a href="detail_pengaduan/{{$pengaduan->id_pengaduan}}"><button type="button" class="btn btn-outline-warning">Detail</button></a>
                       </td> 
                     </td>
                   </tr>

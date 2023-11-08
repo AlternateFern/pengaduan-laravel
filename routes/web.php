@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\pengaduanController;
+use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PetugasController;
-use App\Http\Controllers\UpdateStatusController;
+use App\Http\Controllers\TanggapanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,19 +37,20 @@ Route::post('/petugas/register', [PetugasController::class, 'register']);
 Route::middleware(['checkpetugas'])->group(function () {
     Route::get('/petugas/home', [PetugasController::class, 'home']);
     Route::get('/petugas/logout', [PetugasController::class, 'logout']);
-    Route::get('/petugas/detail_pengaduan/{id}', [pengaduanController::class, 'detailpengaduanpetugas']);
-    Route::get('/petugas/update_status/{id}', [UpdateStatusController::class, 'viewStatus']);
-    Route::post('/petugas/update_status/{id}', [UpdateStatusController::class, 'updateStatus']);
+    Route::get('/petugas/detail_pengaduan/{id}', [PengaduanController::class, 'detailpengaduanpetugas']);
+    Route::get('/petugas/tanggapan_pengaduan/{id}', [TanggapanController::class, 'viewTanggapan']);
+    Route::post('/petugas/tanggapan_pengaduan/{id}', [TanggapanController::class, 'updateStatus']);
+    Route::post('/petugas/hapus_pengaduan/{id}', [TanggapanController::class, 'hapuspengaduan']);
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [pengaduanController::class, 'index']);
-    Route::get('/detail_pengaduan/{id}', [pengaduanController::class, 'detailpengaduan']);
-    Route::get('/isi_pengaduan', [pengaduanController::class, 'isi_pengaduan']);
-    Route::post('/isi_pengaduan', [pengaduanController::class, 'proses_tambah_pengaduan']);
-    Route::get('/hapus_pengaduan/{id}', [pengaduanController::class,'hapus']);
-    Route::get ('/update_pengaduan/{id}', [pengaduanController::class,'update']);
-    Route::post('/update_pengaduan/{id}', [pengaduanController::class,'proses_update']);
+    Route::get('/home', [PengaduanController::class, 'index']);
+    Route::get('/detail_pengaduan/{id}', [PengaduanController::class, 'detailpengaduan']);
+    Route::get('/isi_pengaduan', [PengaduanController::class, 'isi_pengaduan']);
+    Route::post('/isi_pengaduan', [PengaduanController::class, 'proses_tambah_pengaduan']);
+    Route::get('/hapus_pengaduan/{id}', [PengaduanController::class,'hapus']);
+    Route::get ('/update_pengaduan/{id}', [PengaduanController::class,'update']);
+    Route::post('/update_pengaduan/{id}', [PengaduanController::class,'proses_update']);
 });
 
 

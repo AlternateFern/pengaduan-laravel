@@ -127,3 +127,7 @@ body {
     left: 8px;
     padding: 2px;
   }
+
+  .form-anim {
+    animation: intro 
+  }
