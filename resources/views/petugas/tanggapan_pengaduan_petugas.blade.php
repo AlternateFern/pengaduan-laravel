@@ -15,8 +15,7 @@
     @include ('layouts.navbar_petugas')
     <div class="container">
             <div class="mb-3">
-                <form method="POST" action="{{url("/petugas/tanggapan_petugas/$pengaduan->id_pengaduan")}}" enctype="multipart/form-data" class="mb-3">
-                    @method('POST')
+                <form action="{{ route('petugas.tanggapan-form', ['id' => $pengaduan->id_pengaduan]) }}) }}" method="post">
                     @csrf
                     <label for="exampleFormControlTextarea1" class="form-label mt-3">Bukti Gambar / Video</label>
                     <div class="input-group mb-1">
@@ -26,6 +25,16 @@
                         <label for="exampleFormControlTextarea1" class="form-label">Isi Laporan :</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="isi_laporan" disabled>{{  $pengaduan->isi_laporan }}</textarea>
                     </div>
+
+                    @if ($errors->any())
+                        <div style="color: red;">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 <h3 class="mb-3">Status Laporan : {{ $pengaduan->status }}</h3>
 
                 <h5 class="mb-1">Perbarui Status Laporan</h5>
@@ -34,13 +43,20 @@
                     <option value="proses">Proses</option>
                     <option value="selesai">Selesai</option>
                 </select>
-                <div style="display:flex;flex-flow:row wrap;align-items:center;">
-                <button type="submit" class="btn btn-sm btn-success ml-auto" style="padding: 4px 20px; margin-right: 10px;">Simpan</button><h6 style="margin-right:10px;margin-top:4px;">atau</h6>
-                <a href="../hapus_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm btn-danger ml-auto" style="padding: 4px 13px;" onclick="return confirm('Konfirmasi Penghapusan Data?')">Hapus</a>
-                </div>
-                </form>
 
-                <form></form>
+                    <label for="tanggapan">Admin Response:</label>
+                    <textarea name="tanggapan" id="tanggapan" rows="4" cols="50" required></textarea>
+            
+                    <!-- Assuming you have a hidden input field to pass the pengaduan ID -->
+                    <input type="hidden" name="id_pengaduan" value="{{ $pengaduan->id_pengaduan }}">
+            
+                    <br>
+            
+                    <div style="display:flex;flex-flow:row wrap;align-items:center;">
+                        <button type="submit" class="btn btn-sm btn-success ml-auto" style="padding: 4px 20px; margin-right: 10px;">Simpan</button><h6 style="margin-right:10px;margin-top:4px;">atau</h6>
+                        <a href="../hapus_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm btn-danger ml-auto" style="padding: 4px 13px;" onclick="return confirm('Konfirmasi Penghapusan Data?')">Hapus</a>
+                        </div>
+                </form>
             <a href="../detail_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm ml-auto btn-outline-info" style="padding: 4px 13px;">Kembali</a>
             </div>
 </body>

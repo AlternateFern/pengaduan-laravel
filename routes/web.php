@@ -39,8 +39,9 @@ Route::middleware(['checkpetugas'])->group(function () {
     Route::get('/petugas/logout', [PetugasController::class, 'logout']);
     Route::get('/petugas/detail_pengaduan/{id}', [PengaduanController::class, 'detailpengaduanpetugas']);
     Route::get('/petugas/tanggapan_pengaduan/{id}', [TanggapanController::class, 'viewTanggapan']);
-    Route::post('/petugas/tanggapan_pengaduan/{id}', [TanggapanController::class, 'updateStatus']);
+    Route::post('/petugas/tanggapan_pengaduan/{id}', [TanggapanController::class, 'updateTanggapan'])->name('petugas.tanggapan-form');
     Route::post('/petugas/hapus_pengaduan/{id}', [TanggapanController::class, 'hapuspengaduan']);
+
 });
 
 Route::middleware(['auth'])->group(function () {
