@@ -23,8 +23,8 @@ class TanggapanController extends Controller
             'id_pengaduan' => 'required|exists:pengaduan,id_pengaduan',
         ], $customErrorMessages);
     } catch (QueryException $e) {
-        // Check if the exception message contains a specific string indicating a duplicate entry
-        if (str_contains($e->getMessage(), 'Duplicate entry')) {
+        // Handle the specific SQL constraint violation error
+        if ($e->errorInfo[1] == 1062) {
             return redirect()->back()->withErrors(['custom_error' => 'You have already submitted a response for this report.']);
         } else {
             // If it's a different SQL error, rethrow the exception
