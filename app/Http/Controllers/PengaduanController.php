@@ -13,7 +13,6 @@ class pengaduanController extends Controller
     function index(){
             // Query Builder
             // $pengaduan = DB::table('pengaduan')->get();
-
             // Elloquent ORM
             $pengaduan = Pengaduan::where('nik',Auth::user()->nik)->get();
 
@@ -38,12 +37,6 @@ class pengaduanController extends Controller
         $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=',$id)->get();
     
         return view('petugas/detail_pengaduan_petugas',['pengaduan'=> $pengaduan]);
-    }
-
-    function tampil_laporan(){
-        $judul_laporan = "Judul Laporan";
-
-        return view('isi_laporan',['Textlaporan' => $judul_laporan]);
     }
 
     function isi_pengaduan(){

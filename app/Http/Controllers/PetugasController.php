@@ -48,6 +48,8 @@ class PetugasController extends Controller
     }
 
     public function home(){
+        // $adminId = Auth::guard('petugas')->id();
+        // var_dump($adminId);
         $pengaduan = Pengaduan::all();
 
         return view('petugas/home_petugas', ["pengaduan" => $pengaduan]);

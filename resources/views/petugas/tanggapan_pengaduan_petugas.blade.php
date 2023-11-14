@@ -37,6 +37,18 @@
                     @endif
                 <h3 class="mb-3">Status Laporan : {{ $pengaduan->status }}</h3>
 
+
+                @if ($existingResponse)
+                    <p>Kamu sudah menanggapi laporan pengaduan ini.</p>
+                    <button type="button" onclick="showDetails()">Lihat Tanggapan</button>
+                    <br><br>
+                    <div id="responseDetails" style="display: none;">
+                        <label for="tanggapan">Tanggapan Petugas:</label><br>
+                        <textarea name="tanggapan" id="tanggapan" rows="4" cols="50" disabled>{{ $pengaduan->tanggapan->isi_tanggapan }}</textarea>
+                        
+                        <p>Pengaduan Status: {{ $pengaduan->status }}</p>
+                    </div>
+                @else
                 <h5 class="mb-1">Perbarui Status Laporan</h5>
                 <select name="status" class="form-select mb-2" style="width: 8%;outline: none;">
                     <option selected>0</option>
@@ -44,7 +56,7 @@
                     <option value="selesai">Selesai</option>
                 </select>
 
-                    <label for="tanggapan">Admin Response:</label>
+                    <label for="tanggapan">Tanggapan Petugas:</label><br>
                     <textarea name="tanggapan" id="tanggapan" rows="4" cols="50" required></textarea>
             
                     <!-- Assuming you have a hidden input field to pass the pengaduan ID -->
@@ -56,8 +68,21 @@
                         <button type="submit" class="btn btn-sm btn-success ml-auto" style="padding: 4px 20px; margin-right: 10px;">Simpan</button><h6 style="margin-right:10px;margin-top:4px;">atau</h6>
                         <a href="../hapus_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm btn-danger ml-auto" style="padding: 4px 13px;" onclick="return confirm('Konfirmasi Penghapusan Data?')">Hapus</a>
                         </div>
+                @endif
                 </form>
+                
+                <br>
             <a href="../detail_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm ml-auto btn-outline-info" style="padding: 4px 13px;">Kembali</a>
             </div>
+
+            <script>
+                function showDetails() {
+                    var detailsDiv = document.getElementById('responseDetails');
+                    var currentDisplay = detailsDiv.style.display;
+
+                    // Toggle the display state
+                    detailsDiv.style.display = (currentDisplay === 'none') ? 'block' : 'none';
+                }
+            </script>
 </body>
 </html>

@@ -17,8 +17,6 @@ class CheckPetugas
     public function handle(Request $request, Closure $next): Response
     {
         $session = Auth::guard("petugas")->user();
-        // var_dump($session);
-        // die();
         if($session){
         return $next($request);
         }else{
