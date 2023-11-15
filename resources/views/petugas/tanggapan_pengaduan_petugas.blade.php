@@ -7,8 +7,8 @@
     <title>Tanggapi | PM</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/petugas.css">
-    <script type="text/javascript" src="{{ URL::asset('js/refresh.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/petugas.css') }}">
+    <script src="{{ asset('js/refresh.js') }}"></script>
 </head>
 
 <body>
@@ -37,16 +37,19 @@
                     @endif
                 <h3 class="mb-3">Status Laporan : {{ $pengaduan->status }}</h3>
 
-
                 @if ($existingResponse)
                     <p>Kamu sudah menanggapi laporan pengaduan ini.</p>
-                    <button type="button" onclick="showDetails()">Lihat Tanggapan</button>
+                    <button type="button" class="btn btn-sm btn-success ml-auto" onclick="showDetails()">Lihat Tanggapan</button>
                     <br><br>
                     <div id="responseDetails" class="details-container" style="display: none;">
+                        <div class="petugas-user-pfp">
+                        <img src="{{ $petugas->foto_profil ? asset('storage/' . $petugas->foto_profil) : asset('storage/image/default.png') }}" style="border-radius: 50%;" class="pfp" alt="Profile Picture" width="40px" height="40px">
+                        <p style="font-size: 20px; margin:0; margin-left:10px;">{{ $petugas->username }}</p></div><br>
                         <label for="tanggapan">Tanggapan Petugas:</label><br>
                         <textarea name="tanggapan" id="tanggapan" rows="4" cols="50" disabled>{{ $pengaduan->tanggapan->isi_tanggapan }}</textarea>
-                        <p>Pengaduan Status: {{ $pengaduan->status }}</p>
+                        <p>Status: {{ $pengaduan->status }}</p>
                     </div>
+                    
                 @else
                 <h5 class="mb-1">Perbarui Status Laporan</h5>
                 <select name="status" class="form-select mb-2" style="width: 8%;outline: none;">
@@ -60,17 +63,15 @@
             
                     <!-- Assuming you have a hidden input field to pass the pengaduan ID -->
                     <input type="hidden" name="id_pengaduan" value="{{ $pengaduan->id_pengaduan }}">
-            
                     <br>
-            
                     <div style="display:flex;flex-flow:row wrap;align-items:center;">
                         <button type="submit" class="btn btn-sm btn-success ml-auto" style="padding: 4px 20px; margin-right: 10px;">Simpan</button><h6 style="margin-right:10px;margin-top:4px;">atau</h6>
                         <a href="../hapus_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm btn-danger ml-auto" style="padding: 4px 13px;" onclick="return confirm('Konfirmasi Penghapusan Data?')">Hapus</a>
                         </div>
-                @endif
                 </form>
-                
                 <br>
+                @endif
+
             <a href="../detail_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm ml-auto btn-outline-info" style="padding: 4px 13px;">Kembali</a>
             </div>
 

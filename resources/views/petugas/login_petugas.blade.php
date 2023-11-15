@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login (Petugas) | Pengaduan Masyarakat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <script src="{{ asset('js/togglepasswordvisibility.js') }}"></script>
 </head>
 <body>
     <div class="container">
@@ -35,7 +36,7 @@
             </div>
         </form>
         <div class="text-center">
-            <a href="#">Lupa kata sandi?</a> atau <a href="{{url('petugas/register')}}">Daftar</a>
+            <a href="#">Lupa kata sandi?</a>
         </div>
     </div>
     </div>

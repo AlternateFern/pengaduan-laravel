@@ -2,31 +2,13 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Pengaduan;
+use App\Models\Petugas;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller
 {
-    public function viewregister(){
-        return view('petugas/register_petugas'); // file name
-    }
-
-    function register(Request $request){
-        // var_dump($request->all());
-
-        $data = DB::table("petugas")->insert([
-            'nama_petugas' => $request->nama_petugas,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'telp' => $request->telp,
-            'level' => $request->level,
-        ]);
-
-        return redirect('/petugas');
-    }
-
     public function viewlogin(){
         // return Hash::make("123");
         return view('petugas/login_petugas'); // file name
@@ -53,5 +35,31 @@ class PetugasController extends Controller
         $pengaduan = Pengaduan::all();
 
         return view('petugas/home_petugas', ["pengaduan" => $pengaduan]);
+    }
+
+    public function uploadFotoprofil(Request $request){
+        $request->validate([
+            'foto_profil' => 'required|image|mimes:png,jpg,jpeg|max:15000|dimensions:max_width=1000,max_height=1000',
+        ]);
+
+        $petugas = auth()->guard('petugas')->user();
+
+        // Delete existing profile picture (if any)
+        if ($petugas->foto_profil) {
+            Storage::delete($petugas->foto_profil);
+        }
+
+        // Store new profile picture
+        $path = $request->file('foto_profil')->store('fotoprofil', 'public'); // fotoprofil = nama folder
+        $petugas->foto_profil = $path;
+        $petugas->save();
+
+        return redirect()->back()->with('success', 'Profile picture uploaded successfully.');
+    }
+
+    public function viewProfil()
+    {
+        $petugas = auth()->guard('petugas')->user();
+        return view('petugas.profil_petugas', compact('petugas'));
     }
 }

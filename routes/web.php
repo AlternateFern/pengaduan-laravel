@@ -41,7 +41,8 @@ Route::middleware(['checkpetugas'])->group(function () {
     Route::get('/petugas/tanggapan_pengaduan/{id}', [TanggapanController::class, 'viewTanggapan']);
     Route::post('/petugas/tanggapan_pengaduan/{id}', [TanggapanController::class, 'updateTanggapan'])->name('petugas.tanggapan-form');
     Route::post('/petugas/hapus_pengaduan/{id}', [TanggapanController::class, 'hapuspengaduan']);
-
+    Route::get('/petugas/profil', [PetugasController::class, 'viewProfil']);
+    Route::post('/petugas/upload-profile-picture', [PetugasController::class, 'uploadFotoprofil'])->name('petugas.uploadFotoprofil');
 });
 
 Route::middleware(['auth'])->group(function () {

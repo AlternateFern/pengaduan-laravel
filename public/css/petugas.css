@@ -24,3 +24,25 @@ tr {
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+.profile-container {
+    text-align: center;
+    margin: 0 auto;
+}
+.pfp-container {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto; /* Center the container */
+}
+
+.pfp {
+    height: auto;
+    display: block;
+}
+
+.petugas-user-pfp {
+    display: flex;
+    align-items: center;
+}

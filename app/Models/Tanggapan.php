@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tanggapan extends Model
 {
+    public $timestamps = false;
     protected $table = 'tanggapan';
     protected $primaryKey = 'id_tanggapan';
-    public $timestamps = false; // Assuming you don't have created_at and updated_at columns
-
     protected $fillable = [
         'id_pengaduan',
         'tgl_pembuatan',
         'isi_tanggapan',
         'id_petugas',
+        'foto_profil',
     ];
 }

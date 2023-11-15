@@ -6,7 +6,10 @@
       </li>
       <div class="d-flex">
         <li class="nav-item" style="margin-right: 30px;">
-          <a class="nav-link" href="logout">Logout</a>
+          <a class="nav-link" href="{{url('petugas/logout')}}">Logout</a>
+        </li>
+        <li class="nav-item" style="margin-right: 30px;">
+          <a class="nav-link" href="{{url('petugas/profil')}}">Profil</a>
         </li>
       </div>
     </div>
