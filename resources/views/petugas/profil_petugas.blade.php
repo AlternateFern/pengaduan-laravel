@@ -25,6 +25,7 @@
                       <button type="submit">Unggah Foto Profil</button>
                   </form>
               </div>
+              <a href="../petugas/home" class="btn btn-sm ml-auto btn-outline-info" style="padding: 4px 13px;">Kembali</a>
           </div>
 </body>
 </html>
