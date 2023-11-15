@@ -42,10 +42,9 @@
                     <p>Kamu sudah menanggapi laporan pengaduan ini.</p>
                     <button type="button" onclick="showDetails()">Lihat Tanggapan</button>
                     <br><br>
-                    <div id="responseDetails" style="display: none;">
+                    <div id="responseDetails" class="details-container" style="display: none;">
                         <label for="tanggapan">Tanggapan Petugas:</label><br>
                         <textarea name="tanggapan" id="tanggapan" rows="4" cols="50" disabled>{{ $pengaduan->tanggapan->isi_tanggapan }}</textarea>
-                        
                         <p>Pengaduan Status: {{ $pengaduan->status }}</p>
                     </div>
                 @else
