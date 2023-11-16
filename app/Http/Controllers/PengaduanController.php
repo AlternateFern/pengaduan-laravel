@@ -2,65 +2,50 @@
 // isi
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class pengaduanController extends Controller
 {
-    function index(){
-            // Query Builder
-            // $pengaduan = DB::table('pengaduan')->get();
-            // Elloquent ORM
-            $pengaduan = Pengaduan::where('nik',Auth::user()->nik)->get();
+    function viewHome()
+    {
+        // Elloquent ORM
+        $pengaduan = Pengaduan::where('nik', Auth::user()->nik)->get();
 
-            return view('/home', ["pengaduan" => $pengaduan]);
+        return view('/home', ["pengaduan" => $pengaduan]);
     }
 
-    function detailpengaduan($id){
-        // $pengaduan = DB::table('pengaduan')-> get();
-        // $title = "titel";
-
-        // return view('/detail',['pengaduan'=>$pengaduan]);
-        $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=',$id)->get();
-    
-        return view('/detail_pengaduan',['pengaduan'=> $pengaduan]);
+    function detailpengaduan($id)
+    {
+        $pengaduan = Pengaduan::where('id_pengaduan', $id)->get();
+        return view('/detail_pengaduan', ['pengaduan' => $pengaduan]);
     }
 
-    function detailpengaduanpetugas($id){
-        // $pengaduan = DB::table('pengaduan')-> get();
-        // $title = "titel";
-
-        // return view('/detail',['pengaduan'=>$pengaduan]);
-        $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=',$id)->get();
-    
-        return view('petugas/detail_pengaduan_petugas',['pengaduan'=> $pengaduan]);
+    function detailpengaduanpetugas($id)
+    {
+        $pengaduan = Pengaduan::where('id_pengaduan', $id)->get();
+        return view('petugas/detail_pengaduan_petugas', ['pengaduan' => $pengaduan]);
     }
 
-    function isi_pengaduan(){
+    function viewBuatlaporan()
+    {
         return view('isi_pengaduan');
     }
 
-    function proses_tambah_pengaduan(Request $request){
-
-        //validasi
+    function proses_tambah_pengaduan(Request $request)
+    {
         $request->validate([
             'isi_laporan' => 'required|min:5'
         ]);
-        
-        // return Auth::user()->nik;
+
         $nama_foto = $request->foto->getClientOriginalName();
 
-        // Nyimpan Foto / Mindahin File
         $request->foto->storeAs('public/image', $nama_foto);
 
-        // isi
         $isi_pengaduan = $request->isi_laporan;
 
-        DB::table("pengaduan")->insert([
-        // Pengaduan::create([
+        Pengaduan::create([
             'tgl_pengaduan' => date('Y-m-d'),
             'nik' => Auth::user()->nik,
             'isi_laporan' => $isi_pengaduan,
@@ -71,29 +56,31 @@ class pengaduanController extends Controller
         return redirect('/home');
     }
 
-    function hapus($id){
-        DB::table('pengaduan')->where('id_pengaduan','=',$id)->delete();
+    function hapus($id)
+    {
+        // DB::table('pengaduan')->where('id_pengaduan','=',$id)->delete();
+        Pengaduan::where('id_pengaduan', '=', $id)->delete();
         return redirect()->back();
     }
 
-    function proses_update(Request $request,$id){
-
+    function proses_update(Request $request, $id)
+    {
         $request->validate([
             'isi_laporan' => 'required|min:3'
         ]);
 
         $isi_laporan = $request->isi_laporan;
 
-        DB::table('pengaduan')->where('id_pengaduan',$id) -> update([
+        // DB::table('pengaduan')->where('id_pengaduan',$id) -> update([
+        Pengaduan::where('id_pengaduan', $id)->update([
             'isi_laporan' => $isi_laporan,
         ]);
         return redirect('/home');
     }
 
-    function update($id){
-        $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=',$id)->first();
-
-        return view('update_pengaduan',['pengaduan' => $pengaduan]);
+    function update($id)
+    {
+        $pengaduan = Pengaduan::where('id_pengaduan', $id)->first();
+        return view('update_pengaduan', ['pengaduan' => $pengaduan]);
     }
 }
-

@@ -8,14 +8,23 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    function index(){
+    function index()
+    {
         return view('register');
     }
 
-    function register(Request $request){
+    function register(Request $request)
+    {
         // var_dump($request->all());
+        $validate = $request->validate([
+            'nik' => 'required|unique:masyarakat',
+            'nama' => 'required|string',
+            'username' => 'required|unique:masyarakat',
+            'password' => 'required|min:6',
+            'telp' => 'required|numeric',
+        ]);
 
-        $data = DB::table("masyarakat")->insert([
+        $dataRegister = DB::table("masyarakat")->insert([
             'nik' => $request->nik,
             'nama' => $request->nama,
             'username' => $request->username,
@@ -23,6 +32,12 @@ class RegisterController extends Controller
             'telp' => $request->telp
         ]);
 
+        if (!$dataRegister) {
+            return redirect()->back()->with('error', 'Registerasi Gagal.');
+        }
+
+        // Continue with the success flow
+        return redirect()->route('success')->with('success', 'Registration successful.');
         return redirect('/login');
     }
 }

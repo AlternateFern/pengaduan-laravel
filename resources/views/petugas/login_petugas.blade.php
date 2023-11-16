@@ -7,7 +7,7 @@
     <title>Login (Petugas) | Pengaduan Masyarakat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <script src="{{ asset('js/togglepasswordvisibility.js') }}"></script>
+    <script src="{{ asset('js/togglepassword.js') }}"></script>
 </head>
 <body>
     <div class="container">
@@ -27,7 +27,9 @@
                 <div class="bar"></div>
                 <div class="form-inline">
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" style="width:90%;">
-                    <div class="togglepassword"><img src="storage/image/eye.png" width="33px" height="33px" id="togglePassword"></div>
+                    <div id="showPasswordButton" class="eye-icon" onclick="togglePassword()">
+                        <img src="{{ asset('storage/image/eye.png') }}" width="33px" height="33px" alt="Show Password">
+                    </div>
                 </div>
                 <div class="bar" style="width:90%;"></div>
                 <input type="checkbox" name="rememberme" id="rememberme">
