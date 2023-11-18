@@ -29,6 +29,7 @@
                     <a href="../hapus_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm btn-danger ml-auto" style="padding: 4px 13px;" onclick="return confirm('Konfirmasi Penghapusan Data?')">Hapus</a>
                 </form>
             @endforeach
+        
             <a href="../home" class="btn btn-sm btn-info ml-auto" style="padding: 4px 13px;">Kembali</a>
             </div>
 </body>

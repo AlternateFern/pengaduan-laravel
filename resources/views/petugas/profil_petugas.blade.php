@@ -16,14 +16,15 @@
               <h2 style="text-shadow: 0px 1px 1.8px black;"> Welcome,</h2>
                   <div class="profile-container">
                       <div class="pfp-container">
-                          <img src="{{ $petugas->foto_profil ? asset('storage/' . $petugas->foto_profil) : asset('storage/image/default.png') }}" class="pfp" alt="Profile Picture" width="150px" height="150px">
+                          <img src="{{ $petugas->foto_profil ? asset('storage/' . $petugas->foto_profil) : asset('storage/image/default.jpg') }}" class="pfp" alt="Profile Picture" width="150px" height="150px">
                       </div>
                     <h2 style="text-shadow: 0px 1px 1.8px black;">{{ $petugas->username }}</h2>
                     <form action="{{ route('petugas.uploadFotoprofil') }}" method="post" enctype="multipart/form-data">
                       @csrf
                       <input type="file" name="foto_profil" accept=".png, .jpg, .jpeg" />
-                      <button type="submit">Unggah Foto Profil</button>
+                      <button type="submit">Upload PFP</button>
                   </form>
+                <p>pls end this, i hate doing this all day</p>
               </div>
               <a href="../petugas/home" class="btn btn-sm ml-auto btn-outline-info" style="padding: 4px 13px;">Kembali</a>
           </div>

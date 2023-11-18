@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Pengaduan;
-use App\Models\Petugas;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller
@@ -41,7 +40,7 @@ class PetugasController extends Controller
         $request->validate([
             'foto_profil' => 'required|image|mimes:png,jpg,jpeg|max:15000|dimensions:max_width=1000,max_height=1000',
         ]);
-
+        
         $petugas = auth()->guard('petugas')->user();
 
         // Delete existing profile picture (if any)

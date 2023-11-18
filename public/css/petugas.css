@@ -25,6 +25,12 @@ tr {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+#textarea-tanggapan {
+    border: none;
+    resize: none;
+    background-color: white;
+}
+
 .profile-container {
     text-align: center;
     margin: 0 auto;

@@ -20,10 +20,6 @@ class pengaduanController extends Controller
     }
 
     function detailpengaduan($id){
-        // $pengaduan = DB::table('pengaduan')-> get();
-        // $title = "titel";
-
-        // return view('/detail',['pengaduan'=>$pengaduan]);
         $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=',$id)->get();
     
         return view('/detail_pengaduan',['pengaduan'=> $pengaduan]);

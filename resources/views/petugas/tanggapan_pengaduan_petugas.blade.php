@@ -46,7 +46,7 @@
                         <img src="{{ $petugas->foto_profil ? asset('storage/' . $petugas->foto_profil) : asset('storage/image/default.png') }}" style="border-radius: 50%;" class="pfp" alt="Profile Picture" width="40px" height="40px">
                         <p style="font-size: 20px; margin:0; margin-left:10px;">{{ $petugas->username }}</p></div><br>
                         <label for="tanggapan">Tanggapan Petugas:</label><br>
-                        <textarea name="tanggapan" id="tanggapan" rows="4" cols="50" disabled>{{ $pengaduan->tanggapan->isi_tanggapan }}</textarea>
+                        <textarea name="tanggapan" id="textarea-tanggapan" rows="4" cols="50" disabled>{{ $pengaduan->tanggapan->isi_tanggapan }}</textarea>
                         <p>Status: {{ $pengaduan->status }}</p>
                     </div>
                     
