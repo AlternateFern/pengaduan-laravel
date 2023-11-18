@@ -13,6 +13,9 @@
     <div class="container">
         <h1>Register</h1>
         <h3>Selamat datang!</h3>
+        @if(session("error"))
+        <h5 class="alert alert-danger text-center">{{session("error")}}</h5>
+        @endif
         <form class="p-3 mt-3" action="{{url('register')}}" method="POST" enctype="multipart/form-data">
             @method("POST")
             @csrf

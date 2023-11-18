@@ -1,34 +1,39 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PetugasController extends Controller
 {
-    public function viewlogin(){
+    public function viewLogin()
+    {
         // return Hash::make("123");
         return view('petugas/login_petugas'); // file name
     }
 
-    function login(Request $request){
+    function login(Request $request)
+    {
         $data = $request->only('username', 'password');
-        if(Auth::guard("petugas")->attempt($data)){
+        if (Auth::guard("petugas")->attempt($data)) {
             return redirect('/petugas/home');
-        }else{
+        } else {
             return redirect('/petugas')->with("error", "Username atau Password Salah");
         }
     }
 
-    function logout(){
+    function logout()
+    {
         Auth::guard("petugas")->logout();
-
         return redirect("/petugas");
     }
 
-    public function home(){
+    public function viewHome()
+    {
         // $adminId = Auth::guard('petugas')->id();
         // var_dump($adminId);
         $pengaduan = Pengaduan::all();
@@ -36,19 +41,25 @@ class PetugasController extends Controller
         return view('petugas/home_petugas', ["pengaduan" => $pengaduan]);
     }
 
-    public function uploadFotoprofil(Request $request){
+    public function viewListmasyarakat()
+    {
+        $masyarakat = User::all();
+
+        return view('petugas/list_masyarakat', compact('masyarakat'));
+    }
+
+    public function uploadFotoprofil(Request $request)
+    {
         $request->validate([
             'foto_profil' => 'required|image|mimes:png,jpg,jpeg|max:15000|dimensions:max_width=1000,max_height=1000',
         ]);
         
         $petugas = auth()->guard('petugas')->user();
 
-        // Delete existing profile picture (if any)
         if ($petugas->foto_profil) {
             Storage::delete($petugas->foto_profil);
         }
 
-        // Store new profile picture
         $path = $request->file('foto_profil')->store('fotoprofil', 'public'); // fotoprofil = nama folder
         $petugas->foto_profil = $path;
         $petugas->save();

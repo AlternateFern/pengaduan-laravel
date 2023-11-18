@@ -6,10 +6,10 @@
       </li>
       <div class="d-flex">
         <li class="nav-item" style="margin-right: 30px;">
-          <a class="nav-link" href="{{url('petugas/logout')}}">Logout</a>
+          <a class="nav-link" style="color:white;" href="{{url('petugas/list_masyarakat')}}">List Masyarakat</a>
         </li>
         <li class="nav-item" style="margin-right: 30px;">
-          <a class="nav-link" href="{{url('petugas/profil')}}">Profil</a>
+          <a class="nav-link" style="color:white;" href="{{url('petugas/profil')}}">Profil</a>
         </li>
       </div>
     </div>

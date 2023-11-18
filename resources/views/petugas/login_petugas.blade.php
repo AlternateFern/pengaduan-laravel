@@ -28,7 +28,6 @@
                 <div class="form-inline">
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" style="width:90%;">
                     <div id="showPasswordButton" class="eye-icon" onclick="togglePassword()">
-                        <!-- Initially, use an open eye icon -->
                         <img src="{{ asset('storage/image/eye.png') }}" width="33px" height="33px" alt="Show Password">
                     </div>
                 </div>

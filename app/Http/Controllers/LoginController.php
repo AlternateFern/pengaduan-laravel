@@ -7,20 +7,23 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    function index(){
+    function viewLogin()
+    {
         return view('login');
     }
 
-    function login(Request $request){
+    function login(Request $request)
+    {
         $dataLogin = $request->only("username", "password");
-        if(Auth::attempt($dataLogin)){
+        if (Auth::attempt($dataLogin)) {
             return redirect('/home');
-        }else{
-            return redirect('/login')->with("error", "Username atau Password Salah");
+        } else {
+            return redirect()->back()->with("error", "Username atau Password Salah");
         }
     }
 
-    function logout(){
+    function logout()
+    {
         Auth::logout();
 
         return redirect('/login');
