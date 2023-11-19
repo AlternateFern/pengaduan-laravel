@@ -72,7 +72,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Petugas::class,
         ],
-
+        
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

@@ -29,9 +29,28 @@
                     <a href="../hapus_pengaduan/{{$pengaduan->id_pengaduan}}" class="btn btn-sm btn-danger ml-auto" style="padding: 4px 13px;" onclick="return confirm('Konfirmasi Penghapusan Data?')">Hapus</a>
                 </form>
             @endforeach
-        
+            <p>Laporan ini sudah di tanggapi!</p>
+            <button type="button" class="btn btn-sm btn-success ml-auto" onclick="showDetails()">Lihat Tanggapan</button>
+            <br><br>
+            <div id="responseDetails" class="details-container" style="display: none;">
+                <div class="petugas-user-pfp">
+                <img src="{{ $petugas->foto_profil ? asset('storage/' . $petugas->foto_profil) : asset('storage/image/default.png') }}" style="border-radius: 50%;" class="pfp" alt="Profile Picture" width="40px" height="40px">
+                <p style="font-size: 20px; margin:0; margin-left:10px;">{{ $petugas->username }}</p></div><br>
+                <label for="tanggapan">Tanggapan Petugas:</label><br>
+                <textarea name="tanggapan" id="textarea-tanggapan" rows="4" cols="50" disabled>{{ $pengaduan->tanggapan->isi_tanggapan }}</textarea>
+                <p>Status: {{ $pengaduan->status }}</p>
+            </div>
             <a href="../home" class="btn btn-sm btn-info ml-auto" style="padding: 4px 13px;">Kembali</a>
             </div>
+            <script>
+                function showDetails() {
+                    var detailsDiv = document.getElementById('responseDetails');
+                    var currentDisplay = detailsDiv.style.display;
+
+                    // Toggle the display state
+                    detailsDiv.style.display = (currentDisplay === 'none') ? 'block' : 'none';
+                }
+            </script>
 </body>
 
 </html>

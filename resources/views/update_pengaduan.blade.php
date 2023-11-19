@@ -26,10 +26,6 @@
                     <div class="input-group mb-3">
                         <img src="{{ asset("storage/image/$pengaduan->foto") }}" style="width:auto;height:200px; margin-bottom:20px;">
                     </div>
-                    <label for="exampleFormControlTextarea1" class="form-label">Bukti berbentuk File Gambar atau Video</label>
-                    <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="inputGroupFile02" name="foto">
-                    </div>
                     <button type="submit" class="btn btn-sm btn-success ml-auto" style="padding: 4px 20px; margin-right: 3px; margin-top:">Simpan</button>
                 </form>
             <a href="../home" class="btn btn-sm btn-info ml-auto" style="padding: 4px 13px;">Kembali</a>

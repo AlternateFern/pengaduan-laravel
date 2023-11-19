@@ -23,17 +23,23 @@
             <h2 style="text-shadow: 0px 1px 1.8px black;"> List Laporan Pengaduan</h2>
             <table class="table" style="margin-top:20px;">
               <tbody>
+                  <tr>
+                    <th>Foto Profil</th>
+                    <th>ID</th>
+                    <th>NIK</th>
+                    <th>Nama Lengkap</th>
+                    <th>Username</th>
+                    <th>Nomor Telpon</th>
+                  </tr>
                 @foreach ($masyarakat as $masyarakat)
                   <tr>
-                    <td><img src="{{ asset("storage/image/default.png") }}" height="30px" width="30px">
+                    <td><img src="{{ asset("storage/image/default.jpg") }}" style="border-radius:50%" height="30px" width="30px">
                     </td>
                     <td>{{  $masyarakat->id }}</td>
                     <td>{{  $masyarakat->nik }}</td>
                     <td>{{  $masyarakat->nama }}</td>
                     <td>{{  $masyarakat->username }}</td>
                     <td>{{  $masyarakat->telp }}</td>
-                    <td>
-                    </td>
                   </tr>
                 @endforeach
               </tbody>

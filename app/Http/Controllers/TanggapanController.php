@@ -38,12 +38,6 @@ class TanggapanController extends Controller
 
     function viewTanggapan($id)
     {
-        // var_dump(Auth::guard('petugas')->id());
-        // $pengaduan = Pengaduan::where('id_pengaduan', $id)->first();
-        // return view('petugas/tanggapan_pengaduan_petugas', ['pengaduan' => $pengaduan]);
-        // $existingResponse = Tanggapan::where('id_pengaduan', $id)
-        // ->where('id_petugas', Auth::id())
-        // ->exists();
         $pengaduan = Pengaduan::find($id);
         $existingResponse = $pengaduan->tanggapan;
         $petugas = Auth::guard('petugas')->user();

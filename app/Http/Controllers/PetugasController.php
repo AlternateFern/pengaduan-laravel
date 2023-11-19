@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Pengaduan;
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Petugas;
+use Illuminate\Http\Request;
 
 class PetugasController extends Controller
 {
@@ -37,9 +39,40 @@ class PetugasController extends Controller
         // $adminId = Auth::guard('petugas')->id();
         // var_dump($adminId);
         $pengaduan = Pengaduan::all();
-
-        return view('petugas/home_petugas', ["pengaduan" => $pengaduan]);
+        $petugas = Auth::guard('petugas')->user();
+        // $petugas = Auth::guard('petugas')->user();
+        return view('petugas/home_petugas', compact('pengaduan','petugas'));
     }
+
+    public function viewLoginAdmin()
+    {
+        // return Hash::make("123");
+        return view('admin/login_admin'); // file name
+    }
+
+    function loginAdmin(Request $request)
+    {
+        $data = $request->only('username', 'password');
+        if (Auth::guard("admin")->attempt($data)) {
+            return redirect('/admin/home');
+        } else {
+            return redirect('/admin')->with("error", "Username atau Password Salah");
+        }
+    }
+
+    function logoutAdmin()
+    {
+        Auth::guard("admin")->logout();
+        return redirect("/admin");
+    }
+
+    public function viewHomeAdmin()
+    {
+        $pengaduan = Pengaduan::all();
+        $petugas = Auth::guard('petugas')->user();
+        return view('admin/home_admin', compact('pengaduan','petugas'));
+    }
+    
 
     public function viewListmasyarakat()
     {

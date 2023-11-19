@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
+use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,19 +18,21 @@ class pengaduanController extends Controller
     }
 
     function detailpengaduan($id){
-        // $pengaduan = DB::table('pengaduan')-> get();
-        // $title = "titel";
+        $pengaduan = Pengaduan::where('id_pengaduan', $id)->get();
+        $petugas = Auth::guard('petugas')->user();
 
-        // return view('/detail',['pengaduan'=>$pengaduan]);
-        $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=',$id)->get();
-    
-        return view('/detail_pengaduan',['pengaduan'=> $pengaduan]);
+        return view('/detail_pengaduan', [
+            'pengaduan' => $pengaduan,
+
+            'petugas' => $petugas,
+        ]);
     }
 
     function detailpengaduanpetugas($id)
     {
         $pengaduan = Pengaduan::where('id_pengaduan', $id)->get();
-        return view('petugas/detail_pengaduan_petugas', ['pengaduan' => $pengaduan]);
+        $petugas = Auth::guard('petugas')->user();
+        return view('petugas/detail_pengaduan_petugas', ['pengaduan' => $pengaduan, 'petugas' => $petugas]);
     }
 
     function viewBuatlaporan()
@@ -40,7 +43,8 @@ class pengaduanController extends Controller
     function proses_tambah_pengaduan(Request $request)
     {
         $request->validate([
-            'isi_laporan' => 'required|min:5'
+            'isi_laporan' => 'required|min:5',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $nama_foto = $request->foto->getClientOriginalName();

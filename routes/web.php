@@ -32,6 +32,11 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/petugas/', [PetugasController::class, 'viewLogin']);
 Route::post('/petugas/', [PetugasController::class, 'login']);
 
+Route::get('/admin/', [PetugasController::class, 'viewloginAdmin']);
+Route::post('/admin/', [PetugasController::class, 'loginAdmin']);
+Route::get('/admin/logout', [PetugasController::class, 'logoutAdmin']);
+
+
 Route::middleware(['checkpetugas'])->group(function () {
     Route::get('/petugas/home', [PetugasController::class, 'viewHome']);
     Route::get('/petugas/list_masyarakat', [PetugasController::class, 'viewListmasyarakat']);

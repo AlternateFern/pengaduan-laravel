@@ -15,6 +15,10 @@ tr {
     border-left: 6px solid rgba(160, 243, 146, 1); 
 }
 
+.nav-link {
+    color:white !important;
+}
+
 .details-container {
     position: fixed;
     top: 50%;
